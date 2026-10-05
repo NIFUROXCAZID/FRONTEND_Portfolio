@@ -1,0 +1,396 @@
+// --INFO-SECTIONS------------------------------------------------------
+section > section {
+    margin-top: toRem(35);
+}
+section,
+section > section > div {
+    & > :last-child {
+        margin-bottom: 0;
+    }
+    &__contact {
+        margin-top: toRem(0);
+        margin-bottom: toRem(0);
+    }
+    &__container {
+        & > h1 {
+            @extend %main-title;
+        }
+        & > h2 {
+            @extend %default-title;
+            margin-bottom: toRem(15);
+            @extend %abzats-line;
+        }
+        & > p {
+            @extend %default-text;
+            margin-bottom: toRem(25);
+        }
+    }
+    & > h1 {
+        @extend %main-title;
+    }
+    & > h2 {
+        @extend %default-title;
+        margin-bottom: toRem(10);
+        @extend %abzats-line;
+    }
+    & > p {
+        @extend %default-text;
+        margin-bottom: toRem(20);
+        & em {
+            font-style: italic;
+        }
+        & a {
+            text-decoration: underline;
+            color: $main-text;
+        }
+        & strong {
+            font-weight: bold;
+        }
+    }
+
+    & h3 {
+        @extend %sub-title;
+    }
+    & h4 {
+        @extend %sub-title-h3;
+    }
+    // Правильний вариант
+    & figure {
+        overflow-x: auto;
+        width: 100%;
+        margin-bottom: toRem(25);
+        & table {
+            // width: toRem(1110);
+            // max-width: toRem(1190);
+            table-layout: fixed;
+            border-spacing: 0;
+            border-collapse: collapse;
+
+            display: table;
+            min-width: 100%;
+            width: auto;
+            & tbody {
+                & tr {
+                    &:nth-child(even) {
+                        background-color: $table-bg-1;
+                    }
+                    &:nth-child(odd) {
+                        background-color: $table-bg-2;
+                    }
+                    & td {
+                        padding: toRem(10) toRem(0);
+                        @include adaptiveValue("padding-left", 4, 2);
+                        @include adaptiveValue("padding-right", 4, 2);
+                        @include adaptiveValue("font-size", 16, 12);
+                        border: toRem(1) solid $main-text;
+                        text-align: center;
+                        color: $main-text;
+                        @extend %default-font;
+
+                        // font-size: toRem(14);
+                        & li {
+                            // Баговало в safari !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                            // list-style-type: disc;
+                            &::marker {
+                                font-size: toRem(16);
+                            }
+                        }
+                    }
+                    & .strong {
+                        font-weight: bold;
+                        border: none;
+                        border-bottom: toRem(1) solid $main-text;
+                    }
+                }
+            }
+            & thead {
+                // background-color: $main-text-hover--4;
+                & tr {
+                    &:nth-child(even) {
+                        background-color: $table-bg-1;
+                    }
+                    &:nth-child(odd) {
+                        background-color: $table-bg-2;
+                    }
+                    & th {
+                        padding: toRem(10) toRem(0);
+                        @include adaptiveValue("padding-left", 4, 2);
+                        @include adaptiveValue("padding-right", 4, 2);
+                        @include adaptiveValue("font-size", 16, 12);
+                        border: toRem(1) solid $main-text;
+                        text-align: center;
+                        color: $main-text;
+                        @extend %default-font;
+
+                        // font-size: toRem(14);
+                        & li {
+                            // Баговало в safari !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                            // list-style-type: disc;
+                            &::marker {
+                                font-size: toRem(16);
+                            }
+                        }
+                        padding: toRem(10) toRem(0);
+                        @include adaptiveValue("padding-left", 4, 2);
+                        @include adaptiveValue("padding-right", 4, 2);
+                        @include adaptiveValue("font-size", 16, 12);
+                    }
+                }
+            }
+        }
+    }
+    .nonadaptive-table {
+        width: toRem(1110);
+        align-items: flex-start;
+    }
+    .halfadaptive-table {
+        @media (max-width: toEm(950)) {
+            width: toRem(950);
+            align-items: flex-start;
+        }
+    }
+    .fullscale-table {
+        & tbody {
+            width: 100%;
+            & tr {
+                width: 100%;
+                & td {
+                    width: 20%;
+                }
+            }
+        }
+    }
+    .wizual-ref {
+        text-decoration: underline;
+        cursor: pointer;
+        color: $main-text-hover--1;
+    }
+    // --------------------------------------------
+    .li-no-dot-list {
+        list-style-type: none !important;
+        & li {
+            &::before {
+                visibility: hidden !important;
+                opacity: 0 !important;
+            }
+            &::marker {
+                content: "";
+            }
+        }
+    }
+    & ul {
+        margin-left: toRem(5);
+        margin-bottom: toRem(25);
+        margin-left: toRem(-3);
+        & li {
+            position: relative;
+            @extend %default-text;
+            @include adaptiveValue("padding-left", 20, 18);
+            &:not(:last-child) {
+                @include adaptiveValue("margin-bottom", 15, 10);
+            }
+            &::before {
+                content: "";
+                position: absolute;
+                left: toRem(5);
+                // запомнить способ виравнивания
+                top: 50%;
+                transform: translateY(-50%);
+                width: toRem(8);
+                height: toRem(8);
+                background-color: $main-text-hover--3;
+                border-radius: 50%;
+            }
+            // & p {
+            //     @extend %default-text;
+            //     margin-bottom: 0;
+            // }
+            & ul {
+                & li {
+                }
+            }
+        }
+        & li:has(> ul),
+        & li:has(> ol) {
+            &::before {
+                visibility: hidden;
+                opacity: 0;
+            }
+        }
+        .li-no-dot {
+            &::before {
+                visibility: hidden;
+                opacity: 0;
+            }
+        }
+
+        // Для разних стилей списка
+        // li круг
+        .ul-circle {
+            & li {
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: toRem(5);
+                    // запомнить способ виравнивания
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: toRem(8);
+                    height: toRem(8);
+                    background-color: $White-text;
+                    border: 2px solid $main-text;
+                    border-radius: 50%;
+                }
+            }
+        }
+        // li квадраат
+        .ul-square {
+            & li {
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: toRem(5);
+                    // запомнить способ виравнивания
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: toRem(8);
+                    height: toRem(8);
+                    background-color: $main-text;
+                    border-radius: 0%;
+                }
+            }
+        }
+    }
+    .ul-list-inside {
+        margin-left: toRem(5);
+        margin-bottom: toRem(25);
+        margin-top: toRem(10);
+        & li {
+            position: relative;
+            @extend %default-text;
+            @include adaptiveValue("padding-left", 20, 18);
+            &:not(:last-child) {
+                @include adaptiveValue("margin-bottom", 15, 10);
+            }
+            &::before {
+                content: "";
+                position: absolute;
+                left: toRem(5);
+                // запомнить способ виравнивания
+                top: 50%;
+                transform: translateY(-50%);
+                width: toRem(8);
+                height: toRem(8);
+                background-color: $main-text;
+                border-radius: 50%;
+                display: block;
+            }
+        }
+    }
+    & ol {
+        margin-left: toRem(12);
+        margin-bottom: toRem(25);
+        // list-style-type: decimal; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        padding-left: toRem(10);
+        & li {
+            list-style-type: decimal; // НУЖНО ДЛЯ SAFARI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            position: relative;
+            @extend %default-text;
+            @include adaptiveValue("padding-left", 20, 18);
+            &:not(:last-child) {
+                @include adaptiveValue("margin-bottom", 15, 10);
+            }
+            @include adaptiveValue("padding-left", 4, 2);
+            &::before {
+                content: "";
+                position: absolute;
+                left: toRem(2);
+                // запомнить способ виравнивания
+                top: 50%;
+                transform: translateY(-50%);
+                width: toRem(6);
+                height: toRem(6);
+                background-color: $main-text;
+                border-radius: 50%;
+                display: none;
+            }
+        }
+        & > li {
+            &::marker {
+                // багует внутри других списков
+                // content: counter(list-item) ". "; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                color: $main-text;
+                font-weight: bold;
+                unicode-bidi: isolate;
+                font-variant-numeric: tabular-nums;
+                text-transform: none;
+                text-indent: 0px !important;
+                text-align: start !important;
+                text-align-last: start !important;
+                // display: block;
+            }
+        }
+        & ul {
+            margin-left: toRem(5);
+            margin-bottom: toRem(25);
+            margin-top: toRem(10);
+            & li {
+                list-style: none; // НУЖНО ДЛЯ SAFARI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                position: relative;
+                @extend %default-text;
+                @include adaptiveValue("padding-left", 20, 18);
+                &:not(:last-child) {
+                    @include adaptiveValue("margin-bottom", 15, 10);
+                }
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: toRem(5);
+                    // запомнить способ виравнивания
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: toRem(8);
+                    height: toRem(8);
+                    background-color: $main-text;
+                    border-radius: 50%;
+                    display: block;
+                }
+            }
+        }
+    }
+}
+// Ота брух недотаблиця
+.one-td-table {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    row-gap: toRem(15);
+    margin-bottom: toRem(25);
+    & strong {
+        font-weight: bold;
+        border-bottom: toRem(1) solid $main-text;
+        padding: 0 toRem(5) toRem(10) toRem(5);
+        flex: 1 1 33%;
+        @media (max-width: toEm($huge-mobile-adaptive)) {
+            flex: 0 1 100%;
+        }
+    }
+}
+.listed {
+    margin-bottom: 0;
+    & li {
+        padding-left: 0;
+        margin-bottom: toRem(0) !important;
+        & :not(:last-child) {
+            margin-bottom: toRem(0) !important;
+        }
+
+        &::before {
+            display: none !important;
+        }
+    }
+}
+h2 {
+    scroll-margin-top: 150px;
+}

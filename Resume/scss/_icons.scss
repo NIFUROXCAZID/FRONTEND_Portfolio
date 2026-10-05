@@ -1,0 +1,57 @@
+// @font-face {
+//     font-family: "icomoon";
+//       src:  url('fonts/icomoon.eot?h8rl32');
+//       src:  url('fonts/icomoon.eot?h8rl32#iefix') format('embedded-opentype'),
+//         url('fonts/icomoon.ttf?h8rl32') format('truetype'),
+//         url('fonts/icomoon.woff?h8rl32') format('woff'),
+//         url('fonts/icomoon.svg?h8rl32#icomoon') format('svg');
+//     font-weight: normal;
+//     font-style: normal;
+//     font-display: block;
+// }
+
+[class^="icon-"],
+[class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: "icomoon" !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-app:before {
+    content: "\e900";
+}
+.icon-ball:before {
+    content: "\e901";
+}
+.icon-bonus:before {
+    content: "\e902";
+}
+.icon-bonus-code:before {
+    content: "\e903";
+}
+.icon-money-cash:before {
+    content: "\e904";
+}
+.icon-review:before {
+    content: "\e905";
+}
+.icon-slots:before {
+    content: "\e906";
+}
+.icon-spins:before {
+    content: "\e907";
+}
+.icon-vip:before {
+    content: "\e908";
+}
+
+// =======================================================================================
